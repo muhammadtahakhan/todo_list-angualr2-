@@ -1,1 +1,1 @@
-"# todo_list-angualr2-" 
+Develop a Todo List App using Angular 2 RC 4, RxJS and Bootstrap.
