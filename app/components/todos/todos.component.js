@@ -15,10 +15,18 @@ var TodosComponent = (function () {
         this.todosService = todosService;
         this.todos = todosService.gettodos();
     }
+    TodosComponent.prototype.addtodo = function (todoitem) {
+        console.log(todoitem.value);
+        this.todos.push(todoitem.value);
+    };
+    TodosComponent.prototype.deletetodo = function (deleteitem) {
+        console.log(deleteitem);
+        this.todos.splice(deleteitem, 1);
+    };
     TodosComponent = __decorate([
         core_1.Component({
             selector: 'todos',
-            template: "<h1>todolist</h1>\n              <ul>\n              <li *ngFor='#item of todos'>{{item}}</li>\n              </ul>\n  ",
+            template: "<h1>todolist</h1>\n            inter todo:  <input type=\"text\" #item />\n            <button (click)=\"addtodo(item)\">Add</button>\n              <ul>\n              <li *ngFor='let items of todos let i=index' >{{items}}  <button (click)=\"deletetodo(i)\">Delete</button></li>\n              </ul>\n  ",
         }), 
         __metadata('design:paramtypes', [todos_service_1.TodosService])
     ], TodosComponent);
