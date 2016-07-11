@@ -17,7 +17,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: '<h1>My First Angular 2 Todolist</h1><todos></todos>',
+            template: "<h1> Todolist</h1>\n  <input type=\"text\" #parent (keyup)=\"0\"/>{{parent.value}}\n  <button (click)=\"send()\">send</button>\n  <todos [test]=\"parent\"></todos>",
             directives: [todos_component_1.TodosComponent],
             providers: [todos_service_1.TodosService]
         }), 

@@ -9,15 +9,18 @@ import {TodosService} from './../../services/todos.service';
             <button (click)="addtodo(item)">Add</button>
               <ul>
               <li *ngFor='let items of todos let i=index' >{{items}}  <button (click)="deletetodo(i)">Delete</button></li>
-              </ul>
+              </ul>{{test.value}}
   `,
+ inputs: ['test']
 
 })
 export class TodosComponent {
- 
- todos:any;
+ public test:any;
+ public todos:any;
+
 constructor(private todosService:TodosService){
   this.todos = todosService.gettodos();
+ 
 }
  addtodo(todoitem){
    console.log(todoitem.value);
