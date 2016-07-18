@@ -17,7 +17,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "<h1> Todolist</h1>{{childdata}}\n  <input type=\"text\" #parent (keyup)=\"0\"/>\n  <button (click)=\"send()\">send</button>\n  <todos (myevent)=\"childdata=$event\" [test]=\"parent\"></todos>\n  \n  ",
+            template: "<h1> Todolist</h1>{{childdata}}\n  <todos></todos>\n  ",
             directives: [todos_component_1.TodosComponent],
             providers: [todos_service_1.TodosService]
         }), 
