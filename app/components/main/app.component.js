@@ -13,6 +13,7 @@ var todos_component_1 = require('./../todos/todos.component');
 var todos_service_1 = require('./../../services/todos.service');
 var store_1 = require('@ngrx/store');
 var counter_1 = require('./../reducer/counter');
+var ng2_bootstrap_1 = require('ng2-bootstrap/ng2-bootstrap');
 require('rxjs/add/operator/take');
 var AppComponent = (function () {
     function AppComponent(store) {
@@ -31,8 +32,8 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "<h1> Todolist</h1>{{childdata}}\n  <todos></todos>\n  <button (click)=\"increment()\">Increment</button>\n        <div>Current Count: {{ counter | async }}</div>\n        <button (click)=\"decrement()\">Decrement</button>\n  ",
-            directives: [todos_component_1.TodosComponent],
+            template: "<h1> Todolist</h1>{{childdata}}\n  <todos></todos>\n  <button (click)=\"increment()\">Increment</button>\n        <div>Current Count: {{ counter | async }}</div>\n        <button (click)=\"decrement()\">Decrement</button>\n        <alert type=\"info\">ng2-bootstrap hello world!</alert>\n  ",
+            directives: [todos_component_1.TodosComponent, ng2_bootstrap_1.AlertComponent],
             providers: [todos_service_1.TodosService]
         }), 
         __metadata('design:paramtypes', [store_1.Store])

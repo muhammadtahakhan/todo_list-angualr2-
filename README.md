@@ -1,1 +1,1 @@
-Todo app using bootatrap and angualr2 with Rxjs
+Todo app using bootatrap and angualr2 with Rxjs, REDUX

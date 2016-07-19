@@ -6,6 +6,7 @@ import {Store} from '@ngrx/store';
 import {Observable} from "rxjs/Observable";
 import {todolistReducer} from './../reducer/todolistreducer';
 import {INCREMENT, DECREMENT, RESET} from './../reducer/counter';
+import {AlertComponent} from 'ng2-bootstrap/ng2-bootstrap';
 import 'rxjs/add/operator/take';
 interface AppState {
   counter: number;
@@ -17,8 +18,9 @@ interface AppState {
   <button (click)="increment()">Increment</button>
         <div>Current Count: {{ counter | async }}</div>
         <button (click)="decrement()">Decrement</button>
+        <alert type="info">ng2-bootstrap hello world!</alert>
   `,
-  directives: [TodosComponent],
+  directives: [TodosComponent, AlertComponent],
   providers: [TodosService]
 })
 export class AppComponent {
