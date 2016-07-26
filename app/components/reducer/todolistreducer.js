@@ -2,21 +2,18 @@
 exports.ADD = 'ADD';
 exports.UPDATE = 'UPDATE';
 exports.DELETE = 'DELETE';
-exports.todolistReducer = function (state, action) {
-    if (state === void 0) { state = new Date(); }
-    var date = new Date(state.getTime());
-    switch (action.type) {
+exports.todolistReducer = function (state, _a) {
+    if (state === void 0) { state = []; }
+    var type = _a.type, payload = _a.payload;
+    switch (type) {
         case exports.ADD:
-            date.setSeconds(date.getSeconds() + 1);
-            return date;
+            return state.concat([payload]);
         case exports.UPDATE:
-            date.setHours(date.getHours() + 1);
-            return date;
+            return payload;
         case exports.DELETE:
-            date.setHours(date.getHours() + 1);
-            return date;
+            return payload;
         default:
-            return state;
+            return payload;
     }
 };
 //# sourceMappingURL=todolistreducer.js.map

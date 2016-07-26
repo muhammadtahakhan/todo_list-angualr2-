@@ -4,23 +4,20 @@ export const ADD = 'ADD';
 export const UPDATE = 'UPDATE';
 export const DELETE = 'DELETE';
 
-export const todolistReducer: ActionReducer<Date> = (state = new Date(), action: Action)=> {
-    const date = new Date(state.getTime());
-    switch(action.type){
+export const todolistReducer: ActionReducer<Date> = (state : any = [], {type, payload})=> {
+    
+    switch(type){
         case ADD:
-            date.setSeconds(date.getSeconds() + 1);
-            return date;
+          return [...state, payload];
 
         case UPDATE:
-            date.setHours(date.getHours() + 1);
-            return date;
+           return payload;
 
        case DELETE:
-            date.setHours(date.getHours() + 1);
-            return date;     
+           return payload;    
 
         default:
-            return state;
+           return payload;
 
     }
 

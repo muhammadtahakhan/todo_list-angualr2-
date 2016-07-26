@@ -1,4 +1,6 @@
 import { Component, EventEmitter } from '@angular/core';
+import {Store} from '@ngrx/store';
+import {ADD, UPDATE, DELETE} from './../reducer/todolistreducer';
 import {TodosService} from './../../services/todos.service';
 
 
@@ -8,7 +10,7 @@ import {TodosService} from './../../services/todos.service';
             inter todo:  <input type="text" #item/>
             <button (click)="addtodo(item)">Add</button>
               <ul>
-              <li *ngFor='let items of todos let i=index' >{{items}}  <button (click)="deletetodo(i)">Delete</button></li>
+              {{todos | async}}
               </ul>`,
  })
 export class TodosComponent {
@@ -16,14 +18,16 @@ export class TodosComponent {
  public todos:any;
  
 
-constructor(private todosService:TodosService){
-  this.todos = todosService.gettodos();
- 
-}
+constructor(public store: Store<any>){
+     this.todos = store.select('todolist');
+     this.todos.subscribe(action => console.log(action));
+   }
 
 
  addtodo(todoitem){
-   this.todos.push(todoitem.value);
+   this.store.dispatch({type: 'ADD', payload: todoitem.value});
+    // this.store.dispatch({ type: ADD });
+  //  this.todos.push(todoitem.value);
  }
 
 

@@ -9,14 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var todos_service_1 = require('./../../services/todos.service');
+var store_1 = require('@ngrx/store');
 var TodosComponent = (function () {
-    function TodosComponent(todosService) {
-        this.todosService = todosService;
-        this.todos = todosService.gettodos();
+    function TodosComponent(store) {
+        this.store = store;
+        this.todos = store.select('todolist');
+        this.todos.subscribe(function (action) { return console.log(action); });
     }
     TodosComponent.prototype.addtodo = function (todoitem) {
-        this.todos.push(todoitem.value);
+        this.store.dispatch({ type: 'ADD', payload: todoitem.value });
+        // this.store.dispatch({ type: ADD });
+        //  this.todos.push(todoitem.value);
     };
     TodosComponent.prototype.deletetodo = function (deleteitem) {
         this.todos.splice(deleteitem, 1);
@@ -24,9 +27,9 @@ var TodosComponent = (function () {
     TodosComponent = __decorate([
         core_1.Component({
             selector: 'todos',
-            template: "<h1>todolist</h1>\n            inter todo:  <input type=\"text\" #item/>\n            <button (click)=\"addtodo(item)\">Add</button>\n              <ul>\n              <li *ngFor='let items of todos let i=index' >{{items}}  <button (click)=\"deletetodo(i)\">Delete</button></li>\n              </ul>",
+            template: "<h1>todolist</h1>\n            inter todo:  <input type=\"text\" #item/>\n            <button (click)=\"addtodo(item)\">Add</button>\n              <ul>\n              {{todos | async}}\n              </ul>",
         }), 
-        __metadata('design:paramtypes', [todos_service_1.TodosService])
+        __metadata('design:paramtypes', [store_1.Store])
     ], TodosComponent);
     return TodosComponent;
 }());
