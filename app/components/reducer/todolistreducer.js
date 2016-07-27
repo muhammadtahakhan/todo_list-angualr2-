@@ -13,7 +13,7 @@ exports.todolistReducer = function (state, _a) {
         case exports.DELETE:
             return payload;
         default:
-            return payload;
+            return state.slice();
     }
 };
 //# sourceMappingURL=todolistreducer.js.map

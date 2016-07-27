@@ -17,7 +17,7 @@ export const todolistReducer: ActionReducer<Date> = (state : any = [], {type, pa
            return payload;    
 
         default:
-           return payload;
+           return [...state];
 
     }
 

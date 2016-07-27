@@ -10,7 +10,9 @@ import {TodosService} from './../../services/todos.service';
             inter todo:  <input type="text" #item/>
             <button (click)="addtodo(item)">Add</button>
               <ul>
-              {{todos | async}}
+              <li *ngFor="#item of todos | async" >
+              {{item}}
+              </li>
               </ul>`,
  })
 export class TodosComponent {
@@ -20,7 +22,7 @@ export class TodosComponent {
 
 constructor(public store: Store<any>){
      this.todos = store.select('todolist');
-     this.todos.subscribe(action => console.log(action));
+    //  this.todos.subscribe(action => console.log(action));
    }
 
 

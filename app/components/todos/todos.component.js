@@ -14,7 +14,7 @@ var TodosComponent = (function () {
     function TodosComponent(store) {
         this.store = store;
         this.todos = store.select('todolist');
-        this.todos.subscribe(function (action) { return console.log(action); });
+        //  this.todos.subscribe(action => console.log(action));
     }
     TodosComponent.prototype.addtodo = function (todoitem) {
         this.store.dispatch({ type: 'ADD', payload: todoitem.value });
@@ -27,7 +27,7 @@ var TodosComponent = (function () {
     TodosComponent = __decorate([
         core_1.Component({
             selector: 'todos',
-            template: "<h1>todolist</h1>\n            inter todo:  <input type=\"text\" #item/>\n            <button (click)=\"addtodo(item)\">Add</button>\n              <ul>\n              {{todos | async}}\n              </ul>",
+            template: "<h1>todolist</h1>\n            inter todo:  <input type=\"text\" #item/>\n            <button (click)=\"addtodo(item)\">Add</button>\n              <ul>\n              <li *ngFor=\"#item of todos | async\" >\n              {{item}}\n              </li>\n              </ul>",
         }), 
         __metadata('design:paramtypes', [store_1.Store])
     ], TodosComponent);
