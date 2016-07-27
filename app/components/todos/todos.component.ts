@@ -10,7 +10,7 @@ import {TodosService} from './../../services/todos.service';
             inter todo:  <input type="text" #item/>
             <button (click)="addtodo(item)">Add</button>
               <ul>
-              <li *ngFor="#item of todos | async" >
+              <li *ngFor="let item of todos | async" >
               {{item}}
               </li>
               </ul>`,

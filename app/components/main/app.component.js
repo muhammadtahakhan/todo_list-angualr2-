@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var todos_component_1 = require('./../todos/todos.component');
 var todos_service_1 = require('./../../services/todos.service');
-var ng2_bootstrap_1 = require('ng2-bootstrap/ng2-bootstrap');
 var counter_component_1 = require('./../counter/counter.component');
+var router_1 = require('@angular/router');
 require('rxjs/add/operator/take');
 var AppComponent = (function () {
     function AppComponent() {
@@ -20,9 +20,10 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "<h1> Todolist</h1>{{childdata}}\n  <todos></todos>\n  <counter></counter>\n  \n  ",
-            directives: [todos_component_1.TodosComponent, ng2_bootstrap_1.AlertComponent, counter_component_1.CounterComponent],
-            providers: [todos_service_1.TodosService]
+            template: "<h1> Todolist</h1>\n     <nav>\n    <a routerLink=\"counter\" routerLinkActive=\"active\">Crisis Center</a>\n    \n  </nav>\n  <router-outlet></router-outlet>\n\n  <todos></todos>\n \n  \n  ",
+            directives: [todos_component_1.TodosComponent, router_1.ROUTER_DIRECTIVES],
+            providers: [todos_service_1.TodosService, counter_component_1.CounterComponent],
+            precompile: [counter_component_1.CounterComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

@@ -27,7 +27,7 @@ var TodosComponent = (function () {
     TodosComponent = __decorate([
         core_1.Component({
             selector: 'todos',
-            template: "<h1>todolist</h1>\n            inter todo:  <input type=\"text\" #item/>\n            <button (click)=\"addtodo(item)\">Add</button>\n              <ul>\n              <li *ngFor=\"#item of todos | async\" >\n              {{item}}\n              </li>\n              </ul>",
+            template: "<h1>todolist</h1>\n            inter todo:  <input type=\"text\" #item/>\n            <button (click)=\"addtodo(item)\">Add</button>\n              <ul>\n              <li *ngFor=\"let item of todos | async\" >\n              {{item}}\n              </li>\n              </ul>",
         }), 
         __metadata('design:paramtypes', [store_1.Store])
     ], TodosComponent);
