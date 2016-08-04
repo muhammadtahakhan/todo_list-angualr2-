@@ -18,7 +18,7 @@ interface AppState {
         <button (click)="decrement()">Decrement</button>`,
  })
 export class CounterComponent {
- counter: Observable<number>;
+ counter: Observable<any>;
  public todos:any;
  
  constructor(public store: Store<AppState>){

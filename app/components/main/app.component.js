@@ -20,10 +20,10 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "<h1> Todolist</h1>\n     <nav>\n    <a routerLink=\"counter\" routerLinkActive=\"active\">Crisis Center</a>\n    \n  </nav>\n  <router-outlet></router-outlet>\n\n  <todos></todos>\n \n  \n  ",
-            directives: [todos_component_1.TodosComponent, router_1.ROUTER_DIRECTIVES],
+            template: "<h1> Todolist</h1>\n   <nav>\n      <a routerLink=\"counter\" routerLinkActive=\"active\">Crisis Center</a>\n     <a routerLink=\"todolist\" routerLinkActive=\"active\">Todos List</a>\n  </nav>\n  \n  <router-outlet></router-outlet>\n\n  ",
+            directives: [router_1.ROUTER_DIRECTIVES],
             providers: [todos_service_1.TodosService, counter_component_1.CounterComponent],
-            precompile: [counter_component_1.CounterComponent]
+            precompile: [counter_component_1.CounterComponent, todos_component_1.TodosComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

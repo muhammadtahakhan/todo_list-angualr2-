@@ -11,14 +11,15 @@ import {TodosService} from './../../services/todos.service';
             <button (click)="addtodo(item)">Add</button>
               <ul>
               <li *ngFor="let item of todos | async" >
-              {{item}}
+              {{item.todo}}
+              {{item.id}}<button (click)='deletetodo(item.id)' >Delete</button>
               </li>
               </ul>`,
  })
 export class TodosComponent {
  
  public todos:any;
- 
+ private id: number = 0;
 
 constructor(public store: Store<any>){
      this.todos = store.select('todolist');
@@ -27,14 +28,15 @@ constructor(public store: Store<any>){
 
 
  addtodo(todoitem){
-   this.store.dispatch({type: 'ADD', payload: todoitem.value});
+   this.store.dispatch({type: 'ADD', payload:{id:++this.id, todo:todoitem.value} });
     // this.store.dispatch({ type: ADD });
   //  this.todos.push(todoitem.value);
  }
 
 
-deletetodo(deleteitem){
-  this.todos.splice(deleteitem, 1);
+deletetodo(id){
+  console.log(id);
+  this.store.dispatch({type: 'DELETE', payload:id });
 }
 
  }

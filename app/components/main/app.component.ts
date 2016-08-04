@@ -15,21 +15,20 @@ interface AppState {
 @Component({
   selector: 'my-app',
   template: `<h1> Todolist</h1>
-     <nav>
-    <a routerLink="counter" routerLinkActive="active">Crisis Center</a>
-    
+   <nav>
+      <a routerLink="counter" routerLinkActive="active">Crisis Center</a>
+     <a routerLink="todolist" routerLinkActive="active">Todos List</a>
   </nav>
+  
   <router-outlet></router-outlet>
 
-  <todos></todos>
- 
-  
   `,
-  directives: [TodosComponent, ROUTER_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES],
   providers: [TodosService, CounterComponent],
-  precompile: [CounterComponent]
+  precompile: [CounterComponent, TodosComponent]
 })
 export class AppComponent {
 
  
  }
+

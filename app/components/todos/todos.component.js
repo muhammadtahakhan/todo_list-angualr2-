@@ -13,21 +13,23 @@ var store_1 = require('@ngrx/store');
 var TodosComponent = (function () {
     function TodosComponent(store) {
         this.store = store;
+        this.id = 0;
         this.todos = store.select('todolist');
         //  this.todos.subscribe(action => console.log(action));
     }
     TodosComponent.prototype.addtodo = function (todoitem) {
-        this.store.dispatch({ type: 'ADD', payload: todoitem.value });
+        this.store.dispatch({ type: 'ADD', payload: { id: ++this.id, todo: todoitem.value } });
         // this.store.dispatch({ type: ADD });
         //  this.todos.push(todoitem.value);
     };
-    TodosComponent.prototype.deletetodo = function (deleteitem) {
-        this.todos.splice(deleteitem, 1);
+    TodosComponent.prototype.deletetodo = function (id) {
+        console.log(id);
+        this.store.dispatch({ type: 'DELETE', payload: id });
     };
     TodosComponent = __decorate([
         core_1.Component({
             selector: 'todos',
-            template: "<h1>todolist</h1>\n            inter todo:  <input type=\"text\" #item/>\n            <button (click)=\"addtodo(item)\">Add</button>\n              <ul>\n              <li *ngFor=\"let item of todos | async\" >\n              {{item}}\n              </li>\n              </ul>",
+            template: "<h1>todolist</h1>\n            inter todo:  <input type=\"text\" #item/>\n            <button (click)=\"addtodo(item)\">Add</button>\n              <ul>\n              <li *ngFor=\"let item of todos | async\" >\n              {{item.todo}}\n              {{item.id}}<button (click)='deletetodo(item.id)' >Delete</button>\n              </li>\n              </ul>",
         }), 
         __metadata('design:paramtypes', [store_1.Store])
     ], TodosComponent);

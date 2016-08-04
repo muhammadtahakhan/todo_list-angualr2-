@@ -11,7 +11,7 @@ exports.todolistReducer = function (state, _a) {
         case exports.UPDATE:
             return payload;
         case exports.DELETE:
-            return payload;
+            return state.filter(function (todo) { return todo.id !== payload; });
         default:
             return state.slice();
     }
